@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Swap Project</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6B52AE, #50277D);
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, #673AB7, #50277D);
+            padding-top: 20px;
+            padding-left: 10px;
+            color: #fff;
+        }
+
+        #main-content {
+            margin-left: 200px;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .menu-item {
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .menu-item:hover {
+            background-color: #512DA8;
+        }
+
+        #logout-btn {
+            background-color: #D32F2F;
+        }
+
+        #logout-btn:hover {
+            background-color: #B71C1C;
+        }
+
+        .content {
+            display: none;
+            background: linear-gradient(180deg, #fff, #e0e0e0);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #333;
+            animation: slideIn 1s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h2 {
+            color: #512DA8;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #512DA8;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap">
+</head>
+<body>
+
+<div id="sidebar">
+    <div class="menu-item" onclick="showContent('dashboard-content')">Dashboard</div>
+    <div class="menu-item" onclick="showContent('wallet-content')">Wallet</div>
+    <div class="menu-item">Security</div>
+    <div class="menu-item">Order</div>
+    <div class="menu-item">Account Information</div>
+    <div class="menu-item">Invite Friends</div>
+    <div class="menu-item" id="logout-btn">Logout</div>
+</div>
+
+<div id="main-content">
+    <div id="dashboard-content" class="content">
+        <h2>Welcome, BharZ!</h2>
+        <p>Your wallet balance: 5.25 ETH</p>
+        <canvas id="flowchart" width="400" height="200"></canvas>
+    </div>
+
+    <div id="wallet-content" class="content">
+        <h2>Your Wallet</h2>
+        <div id='balance-info'>
+            <p>Total Balance: 5.25 ETH</p>
+        </div>
+        <div id='current-price'>
+            <p>Current Ethereum Price: $2000 USD</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showContent(contentId) {
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+
+        var selectedContent = document.getElementById(contentId);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', function () {
+        alert('Logged out successfully!');
+        // window.location.href = 'logout.php';
+    });
+</script>
+
+</body>
+</html>
